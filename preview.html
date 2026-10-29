@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumah Kosmetik | 100 Produk Kecantikan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --pink:#e98baa;
+  --dark:#c95f87;
+  --light:#fff0f5;
+  --cream:#fffaf9;
+  --text:#49343d;
+  --muted:#89757e;
+  --border:#f3dce5;
+  --shadow:0 12px 35px rgba(169,91,119,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--text);line-height:1.65}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1150px,91%);margin:auto}
+.section{padding:75px 0}
+.eyebrow{display:inline-block;background:var(--light);color:var(--dark);border:1px solid var(--border);padding:6px 15px;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:15px}
+.heading{text-align:center;max-width:680px;margin:0 auto 35px}
+.heading h2,.about-copy h2,.contact-copy h2{font-family:"Playfair Display",serif;font-size:clamp(30px,4vw,43px);line-height:1.2;margin-bottom:14px}
+.heading p,.about-copy p,.contact-copy p{color:var(--muted);font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 23px;border-radius:40px;background:var(--dark);color:white;font-size:13px;font-weight:700;transition:.25s}
+.btn:hover{transform:translateY(-3px);background:#b94d75}
+
+/* HERO */
+.hero{padding:75px 0;background:radial-gradient(circle at 5% 15%,#ffe0ec,transparent 30%),radial-gradient(circle at 90% 85%,#f8d6e3,transparent 30%),linear-gradient(135deg,#fffaf9,#fff0f5)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px}
+.hero h1{font:700 clamp(42px,5.5vw,68px)/1.12 "Playfair Display",serif;letter-spacing:-1px;margin:14px 0 22px}
+.hero h1 span{color:var(--dark);font-style:italic}
+.hero-copy>p{color:var(--muted);font-size:15px;margin-bottom:26px;max-width:520px}
+.hero-image{height:460px;object-fit:cover;border-radius:170px 170px 28px 28px;box-shadow:var(--shadow)}
+.hero-visual{position:relative;padding:12px}
+.glass{position:absolute;bottom:38px;left:-15px;padding:16px 20px;border:1px solid white;border-radius:18px;background:#ffffffd9;backdrop-filter:blur(15px);box-shadow:var(--shadow)}
+.glass strong{display:block;font:600 21px "Playfair Display",serif}
+.glass small{color:var(--muted)}
+.hero-note{margin-top:24px;color:var(--muted);font-size:12px}
+.hero-note i{color:var(--dark);margin-right:8px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px}
+.about-image{height:380px;border-radius:25px;object-fit:cover;box-shadow:var(--shadow)}
+.about-copy p{margin:12px 0}
+.about-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0;font-size:12px;font-weight:600}
+.about-points i{color:var(--dark);margin-right:7px}
+
+/* BRANDS */
+.brands{background:linear-gradient(180deg,#fff0f5,#fffaf9)}
+.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.brand{background:#ffffffc9;border:1px solid white;border-radius:20px;padding:23px 12px;text-align:center;transition:.25s}
+.brand:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.brand i{width:49px;height:49px;display:grid;place-items:center;margin:0 auto 12px;border-radius:16px;color:var(--dark);background:var(--light);font-size:20px}
+.brand h3{font:600 18px "Playfair Display",serif}
+.brand p{font-size:11px;color:var(--muted);margin-top:5px}
+
+/* PRODUCT CATALOG */
+.catalog{background:#fff}
+.catalog-tools{display:grid;grid-template-columns:1fr 230px;gap:12px;margin-bottom:13px}
+.search-box{position:relative}
+.search-box i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search-box input,.filter-select{width:100%;padding:14px 15px;border:1px solid var(--border);border-radius:13px;background:#fffafc;color:var(--text);outline:none}
+.search-box input{padding-left:43px}
+.search-box input:focus,.filter-select:focus{border-color:var(--pink)}
+.filter-chips{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0 25px}
+.chip{border:1px solid var(--border);border-radius:30px;background:white;color:var(--muted);padding:8px 14px;cursor:pointer;font-size:12px;transition:.2s}
+.chip.active,.chip:hover{background:var(--dark);color:white;border-color:var(--dark)}
+.product-count{color:var(--muted);font-size:12px;margin-bottom:16px}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:19px}
+.product-card{overflow:hidden;border:1px solid var(--border);border-radius:19px;background:white;transition:.25s}
+.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.product-image{height:195px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#fff0f5,#fbe0e9)}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:.35s}
+.product-card:hover .product-image img{transform:scale(1.05)}
+.product-icon{font-size:48px;color:#d47c9c}
+.product-badge{position:absolute;top:11px;left:11px;background:#ffffffed;color:var(--dark);padding:5px 9px;border-radius:20px;font-size:10px;font-weight:700}
+.product-info{padding:15px}
+.product-category{color:var(--dark);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+.product-info h3{font-size:14px;line-height:1.45;margin:6px 0 5px}
+.product-brand{font-size:11px;color:var(--muted)}
+.product-price{font-size:14px;font-weight:700;color:var(--dark);margin-top:10px}
+.product-desc{font-size:11px;color:var(--muted);margin-top:5px;min-height:36px}
+.product-detail{display:inline-flex;align-items:center;gap:7px;margin-top:12px;color:var(--dark);font-size:11px;font-weight:700;cursor:pointer;border:0;background:none}
+.load-wrap{text-align:center;margin-top:32px}
+.load-btn{padding:13px 25px;border:1px solid var(--dark);border-radius:40px;background:white;color:var(--dark);font-weight:700;cursor:pointer;transition:.2s}
+.load-btn:hover{background:var(--dark);color:white}
+.empty-state{grid-column:1/-1;padding:50px 15px;text-align:center;color:var(--muted)}
+.empty-state i{font-size:32px;color:var(--pink);margin-bottom:12px}
+
+/* TIPS */
+.tips{background:#fff7fa}
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tip-card{padding:26px;border:1px solid var(--border);border-radius:20px;background:white}
+.tip-icon{width:47px;height:47px;display:grid;place-items:center;background:var(--light);color:var(--dark);border-radius:15px;margin-bottom:15px;font-size:19px}
+.tip-card h3{font:600 20px "Playfair Display",serif;margin-bottom:9px}
+.tip-card p{color:var(--muted);font-size:12px}
+
+/* CONTACT & FOOTER */
+.contact{padding:60px 0;background:linear-gradient(135deg,#fce5ee,#fff5f8)}
+.contact-box{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.contact-copy{max-width:660px}
+footer{background:#38252e;color:#f8eaf0;padding:30px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-logo{font-weight:700;letter-spacing:1px}
+.footer-inner p{font-size:11px;color:#cdb9c2}
+.whatsapp{position:fixed;right:20px;bottom:20px;width:53px;height:53px;display:grid;place-items:center;border-radius:50%;background:#25d366;color:white;font-size:27px;box-shadow:0 8px 24px #25d36655;z-index:10}
+.note{font-size:11px;color:var(--muted);text-align:center;margin-top:20px}
+
+@media(max-width:950px){
+ .hero-grid{gap:25px}.hero-image{height:390px}
+ .product-grid{grid-template-columns:repeat(3,1fr)}
+ .brand-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:700px){
+ .section{padding:60px 0}
+ .hero{padding:55px 0}
+ .hero-grid,.about-grid{grid-template-columns:1fr;gap:30px}
+ .hero-copy{text-align:center}.hero-copy>p{margin-left:auto;margin-right:auto}
+ .hero-image{height:350px}.hero-visual{width:min(430px,100%);margin:auto}
+ .benefit-grid{grid-template-columns:1fr}
+ .brand-grid{grid-template-columns:repeat(2,1fr)}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .product-image{height:160px}.product-info{padding:12px}
+ .product-info h3{font-size:12px}
+ .catalog-tools{grid-template-columns:1fr}
+ .tips-grid{grid-template-columns:1fr}
+ .contact-box{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:380px){
+ .product-image{height:135px}
+ .product-info h3{font-size:11px}
+ .product-desc{font-size:10px}
+ .product-price{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- BERANDA -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="fa-solid fa-heart"></i> Your Beauty Space</span>
+      <h1>Rawat Dirimu,<br>Pancarkan <span>Cantikmu.</span></h1>
+      <p>Selamat datang di Rumah Kosmetik. Temukan inspirasi skincare, makeup, body care, dan berbagai produk kecantikan untuk menemani rutinitas perawatan dirimu.</p>
+      <a href="#produk" class="btn">Jelajahi 100 Produk <i class="fa-solid fa-arrow-down"></i></a>
+      <div class="hero-note"><i class="fa-solid fa-sparkles"></i> Kecantikan dimulai dari rasa percaya diri.</div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=85" alt="Koleksi kosmetik">
+      <div class="glass"><strong>Love Your Skin</strong><small>Care for yourself every day</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section class="section">
+  <div class="container about-grid">
+    <img class="about-image" src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=85" alt="Produk kecantikan" loading="lazy">
+    <div class="about-copy">
+      <span class="eyebrow">Tentang Kami</span>
+      <h2>Tempat Menemukan Inspirasi Kecantikanmu</h2>
+      <p>Rumah Kosmetik adalah halaman informasi untuk mengenal beragam produk kecantikan, mulai dari perawatan kulit hingga makeup.</p>
+      <p>Kami menghadirkan katalog produk, informasi kategori, dan inspirasi perawatan diri dalam satu tampilan yang mudah dijelajahi.</p>
+      <div class="about-points">
+        <span><i class="fa-solid fa-circle-check"></i> 100 produk katalog</span>
+        <span><i class="fa-solid fa-circle-check"></i> Brand lokal favorit</span>
+        <span><i class="fa-solid fa-circle-check"></i> Inspirasi skincare</span>
+        <span><i class="fa-solid fa-circle-check"></i> Tampilan responsif</span>
+      </div>
+      <a href="#produk" class="btn">Lihat Katalog <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND LOKAL -->
+<section class="section brands">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Local Beauty</span>
+      <h2>Brand Kecantikan Lokal Favorit</h2>
+      <p>Kenali sejumlah brand kecantikan Indonesia dengan berbagai pilihan produk.</p>
+    </div>
+    <div class="brand-grid">
+      <div class="brand"><i class="fa-solid fa-leaf"></i><h3>Wardah</h3><p>Skincare & makeup</p></div>
+      <div class="brand"><i class="fa-solid fa-heart"></i><h3>Emina</h3><p>Beauty essentials</p></div>
+      <div class="brand"><i class="fa-solid fa-star"></i><h3>Make Over</h3><p>Makeup</p></div>
+      <div class="brand"><i class="fa-solid fa-droplet"></i><h3>Somethinc</h3><p>Skincare & makeup</p></div>
+      <div class="brand"><i class="fa-solid fa-seedling"></i><h3>Avoskin</h3><p>Skincare</p></div>
+      <div class="brand"><i class="fa-solid fa-spa"></i><h3>Scarlett Whitening</h3><p>Body care</p></div>
+      <div class="brand"><i class="fa-solid fa-gem"></i><h3>ESQA</h3><p>Makeup</p></div>
+      <div class="brand"><i class="fa-solid fa-flower"></i><h3>Mustika Ratu & Sariayu</h3><p>Beauty & body care</p></div>
+    </div>
+    <p class="note">Nama brand ditampilkan sebagai informasi. Website ini bukan situs resmi brand tersebut.</p>
+  </div>
+</section>
+
+<!-- KATALOG 100 PRODUK -->
+<section class="section catalog" id="produk">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Beauty Collection</span>
+      <h2>Katalog 100 Produk Kecantikan</h2>
+      <p>Jelajahi koleksi skincare, makeup, body care, hair care, dan parfum. Gunakan pencarian untuk menemukan produk yang kamu inginkan.</p>
+    </div>
+
+    <div class="catalog-tools">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" id="searchInput" placeholder="Cari nama produk, brand, atau kategori..." aria-label="Cari produk">
+      </div>
+      <select class="filter-select" id="categorySelect" aria-label="Filter kategori">
+        <option value="Semua">Semua Kategori</option>
+        <option value="Skincare">Skincare</option>
+        <option value="Makeup">Makeup</option>
+        <option value="Body Care">Body Care</option>
+        <option value="Hair Care">Hair Care</option>
+        <option value="Fragrance">Fragrance</option>
+        <option value="Lip Care">Lip Care</option>
+      </select>
+    </div>
+
+    <div class="filter-chips" id="filterChips">
+      <button class="chip active" data-category="Semua">Semua Produk</button>
+      <button class="chip" data-category="Skincare">Skincare</button>
+      <button class="chip" data-category="Makeup">Makeup</button>
+      <button class="chip" data-category="Body Care">Body Care</button>
+      <button class="chip" data-category="Hair Care">Hair Care</button>
+      <button class="chip" data-category="Fragrance">Parfum</button>
+      <button class="chip" data-category="Lip Care">Lip Care</button>
+    </div>
+
+    <p class="product-count" id="productCount" aria-live="polite">Memuat katalog...</p>
+    <div class="product-grid" id="productGrid"></div>
+
+    <div class="load-wrap">
+      <button class="load-btn" id="loadMore">Muat Lebih Banyak <i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+
+    <p class="note">Katalog ini merupakan contoh informasi produk dan estimasi harga dalam rupiah, bukan penawaran harga resmi. Foto produk dapat berupa ilustrasi kecantikan.</p>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section tips">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Beauty Journal</span>
+      <h2>Tips Kecantikan Sederhana</h2>
+      <p>Kebiasaan kecil untuk membantu kamu membangun rutinitas perawatan diri.</p>
+    </div>
+    <div class="tips-grid">
+      <article class="tip-card">
+        <div class="tip-icon"><i class="fa-solid fa-droplet"></i></div>
+        <h3>Kenali Jenis Kulit</h3>
+        <p>Perhatikan kondisi kulit sebelum memilih produk. Kebutuhan setiap jenis kulit dapat berbeda.</p>
+      </article>
+      <article class="tip-card">
+        <div class="tip-icon"><i class="fa-solid fa-sun"></i></div>
+        <h3>Gunakan Sunscreen</h3>
+        <p>Jadikan sunscreen bagian dari rutinitas pagi dan ikuti petunjuk pemakaian pada label.</p>
+      </article>
+      <article class="tip-card">
+        <div class="tip-icon"><i class="fa-solid fa-heart"></i></div>
+        <h3>Konsisten Merawat Diri</h3>
+        <p>Mulai dengan rutinitas sederhana dan perhatikan reaksi kulit ketika mencoba produk baru.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="contact">
+  <div class="container contact-box">
+    <div class="contact-copy">
+      <span class="eyebrow">Let's Connect</span>
+      <h2>Ada Pertanyaan Seputar Kecantikan?</h2>
+      <p>Hubungi Rumah Kosmetik untuk bertanya tentang informasi produk dan kecantikan.</p>
+    </div>
+    <a class="btn" href="https://wa.me/6281360701614" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-whatsapp"></i> Hubungi WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo"><i class="fa-solid fa-spa"></i> RUMAH KOSMETIK</div>
+    <p>&copy; <span id="year"></span> Rumah Kosmetik. Made with <i class="fa-solid fa-heart" style="color:#f4a9c4"></i>.</p>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/6281360701614" target="_blank" rel="noopener noreferrer" aria-label="Hubungi WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+/*
+  Katalog dibuat dari 100 data produk.
+  Nama, brand, dan harga adalah contoh untuk demonstrasi website.
+  Silakan sesuaikan dengan produk dan harga yang benar.
+*/
+
+const productSeed = [
+  {name:"Facial Wash Gentle",brand:"Wardah",category:"Skincare",price:35000,desc:"Pembersih wajah untuk rutinitas harian."},
+  {name:"Hydrating Toner",brand:"Somethinc",category:"Skincare",price:65000,desc:"Toner untuk melengkapi rutinitas perawatan."},
+  {name:"Serum Niacinamide",brand:"Somethinc",category:"Skincare",price:89000,desc:"Serum untuk rutinitas perawatan kulit."},
+  {name:"Moisturizer Gel",brand:"Emina",category:"Skincare",price:42000,desc:"Pelembap bertekstur gel."},
+  {name:"Sunscreen SPF 50",brand:"Wardah",category:"Skincare",price:58000,desc:"Perlindungan matahari untuk aktivitas harian."},
+  {name:"Micellar Water",brand:"Wardah",category:"Skincare",price:32000,desc:"Pembersih makeup dan kotoran."},
+  {name:"Cleansing Balm",brand:"Somethinc",category:"Skincare",price:79000,desc:"Pembersih untuk membantu mengangkat makeup."},
+  {name:"Exfoliating Serum",brand:"Avoskin",category:"Skincare",price:145000,desc:"Perawatan eksfoliasi sesuai petunjuk label."},
+  {name:"Essence Hydrating",brand:"Avoskin",category:"Skincare",price:110000,desc:"Essence untuk rutinitas perawatan kulit."},
+  {name:"Eye Cream",brand:"Wardah",category:"Skincare",price:72000,desc:"Krim untuk area sekitar mata."},
+  {name:"Lip Tint",brand:"Emina",category:"Makeup",price:45000,desc:"Warna bibir untuk tampilan sehari-hari."},
+  {name:"Matte Lipstick",brand:"Make Over",category:"Makeup",price:99000,desc:"Lipstik dengan hasil akhir matte."},
+  {name:"Cushion Foundation",brand:"Somethinc",category:"Makeup",price:135000,desc:"Complexion untuk riasan wajah."},
+  {name:"Compact Powder",brand:"Wardah",category:"Makeup",price:52000,desc:"Bedak praktis untuk riasan."},
+  {name:"Blush On",brand:"Emina",category:"Makeup",price:39000,desc:"Memberi warna pada pipi."},
+  {name:"Eyeshadow Palette",brand:"Make Over",category:"Makeup",price:125000,desc:"Pilihan warna untuk riasan mata."},
+  {name:"Mascara",brand:"Wardah",category:"Makeup",price:57000,desc:"Produk riasan bulu mata."},
+  {name:"Liquid Eyeliner",brand:"ESQA",category:"Makeup",price:79000,desc:"Eyeliner untuk mempertegas mata."},
+  {name:"Concealer",brand:"Make Over",category:"Makeup",price:88000,desc:"Produk untuk meratakan tampilan complexion."},
+  {name:"Setting Spray",brand:"Somethinc",category:"Makeup",price:95000,desc:"Semprotan akhir untuk riasan."},
+  {name:"Body Lotion",brand:"Scarlett Whitening",category:"Body Care",price:75000,desc:"Lotion untuk membantu melembapkan kulit."},
+  {name:"Body Scrub",brand:"Mustika Ratu",category:"Body Care",price:38000,desc:"Scrub untuk perawatan tubuh."},
+  {name:"Shower Gel",brand:"Scarlett Whitening",category:"Body Care",price:55000,desc:"Pembersih tubuh untuk mandi."},
+  {name:"Body Butter",brand:"Scarlett Whitening",category:"Body Care",price:89000,desc:"Pelembap tubuh bertekstur kaya."},
+  {name:"Hand Cream",brand:"Wardah",category:"Body Care",price:28000,desc:"Krim pelembap tangan."},
+  {name:"Body Serum",brand:"Scarlett Whitening",category:"Body Care",price:68000,desc:"Serum untuk rutinitas perawatan tubuh."},
+  {name:"Foot Cream",brand:"Mustika Ratu",category:"Body Care",price:35000,desc:"Perawatan kulit kaki."},
+  {name:"Deodorant",brand:"Wardah",category:"Body Care",price:25000,desc:"Produk perawatan area ketiak."},
+  {name:"Body Mist",brand:"Emina",category:"Fragrance",price:42000,desc:"Wewangian ringan untuk aktivitas."},
+  {name:"Hand & Body Lotion",brand:"Sariayu",category:"Body Care",price:33000,desc:"Lotion untuk perawatan tubuh."},
+  {name:"Shampoo Daily Care",brand:"Makarizo",category:"Hair Care",price:45000,desc:"Sampo untuk rutinitas mencuci rambut."},
+  {name:"Conditioner",brand:"Makarizo",category:"Hair Care",price:48000,desc:"Kondisioner untuk perawatan rambut."},
+  {name:"Hair Serum",brand:"Makarizo",category:"Hair Care",price:65000,desc:"Serum rambut untuk rutinitas penataan."},
+  {name:"Hair Mask",brand:"Makarizo",category:"Hair Care",price:72000,desc:"Masker untuk perawatan rambut."},
+  {name:"Hair Vitamin",brand:"Makarizo",category:"Hair Care",price:39000,desc:"Vitamin rambut untuk rutinitas harian."},
+  {name:"Hair Tonic",brand:"Natur",category:"Hair Care",price:52000,desc:"Tonic untuk perawatan kulit kepala."},
+  {name:"Dry Shampoo",brand:"Makarizo",category:"Hair Care",price:68000,desc:"Produk praktis untuk rambut."},
+  {name:"Hair Mist",brand:"Makarizo",category:"Hair Care",price:45000,desc:"Wewangian untuk rambut."},
+  {name:"Hair Oil",brand:"Natur",category:"Hair Care",price:49000,desc:"Minyak untuk perawatan rambut."},
+  {name:"Leave-in Conditioner",brand:"Makarizo",category:"Hair Care",price:58000,desc:"Perawatan rambut tanpa bilas."},
+  {name:"Eau de Parfum Floral",brand:"HMNS",category:"Fragrance",price:250000,desc:"Wewangian dengan karakter floral."},
+  {name:"Eau de Parfum Fresh",brand:"HMNS",category:"Fragrance",price:240000,desc:"Wewangian dengan karakter segar."},
+  {name:"Perfume Roll-on",brand:"Mykonos",category:"Fragrance",price:65000,desc:"Wewangian praktis dibawa bepergian."},
+  {name:"Body Mist Floral",brand:"Emina",category:"Fragrance",price:45000,desc:"Body mist beraroma floral."},
+  {name:"Perfume Mini",brand:"HMNS",category:"Fragrance",price:95000,desc:"Ukuran praktis untuk perjalanan."},
+  {name:"Eau de Parfum Woody",brand:"Mykonos",category:"Fragrance",price:180000,desc:"Wewangian dengan karakter woody."},
+  {name:"Hair & Body Mist",brand:"Scarlett Whitening",category:"Fragrance",price:58000,desc:"Wewangian untuk rambut dan tubuh."},
+  {name:"Perfume Discovery Set",brand:"HMNS",category:"Fragrance",price:150000,desc:"Pilihan aroma dalam ukuran mini."},
+  {name:"Perfume Citrus",brand:"Mykonos",category:"Fragrance",price:175000,desc:"Wewangian bernuansa citrus."},
+  {name:"Perfume Musk",brand:"HMNS",category:"Fragrance",price:230000,desc:"Wewangian dengan karakter musk."},
+  {name:"Lip Balm",brand:"Emina",category:"Lip Care",price:25000,desc:"Membantu menjaga kelembapan bibir."},
+  {name:"Lip Sleeping Mask",brand:"Somethinc",category:"Lip Care",price:55000,desc:"Perawatan bibir saat malam."},
+  {name:"Lip Scrub",brand:"Emina",category:"Lip Care",price:28000,desc:"Eksfoliasi bibir sesuai petunjuk."},
+  {name:"Lip Oil",brand:"ESQA",category:"Lip Care",price:79000,desc:"Produk bibir dengan hasil berkilau."},
+  {name:"Lip Gloss",brand:"ESQA",category:"Lip Care",price:85000,desc:"Memberikan tampilan glossy."},
+  {name:"Lip Cream",brand:"Wardah",category:"Lip Care",price:49000,desc:"Warna bibir dengan tekstur krim."},
+  {name:"Tinted Lip Balm",brand:"Emina",category:"Lip Care",price:32000,desc:"Balm bibir dengan sentuhan warna."},
+  {name:"Lip Serum",brand:"Somethinc",category:"Lip Care",price:65000,desc:"Serum untuk rutinitas perawatan bibir."},
+  {name:"Lip Liner",brand:"Make Over",category:"Lip Care",price:68000,desc:"Membantu membentuk garis bibir."},
+  {name:"Lip Treatment",brand:"Wardah",category:"Lip Care",price:35000,desc:"Produk perawatan bibir harian."},
+  {name:"Gentle Cleanser",brand:"Avoskin",category:"Skincare",price:95000,desc:"Pembersih untuk rutinitas wajah."},
+  {name:"Barrier Moisturizer",brand:"Somethinc",category:"Skincare",price:105000,desc:"Pelembap untuk rutinitas skin barrier."},
+  {name:"Vitamin C Serum",brand:"Avoskin",category:"Skincare",price:135000,desc:"Serum untuk rutinitas perawatan kulit."},
+  {name:"Hydrating Essence",brand:"Wardah",category:"Skincare",price:65000,desc:"Essence untuk menambah langkah hidrasi."},
+  {name:"Clay Mask",brand:"Emina",category:"Skincare",price:32000,desc:"Masker wajah untuk rutinitas mingguan."},
+  {name:"Sleeping Mask",brand:"Somethinc",category:"Skincare",price:89000,desc:"Masker malam sesuai petunjuk produk."},
+  {name:"Sunscreen Gel",brand:"Azarine",category:"Skincare",price:65000,desc:"Sunscreen dengan tekstur gel."},
+  {name:"Acne Spot Gel",brand:"Wardah",category:"Skincare",price:39000,desc:"Produk perawatan untuk area tertentu."},
+  {name:"Pore Cleansing",brand:"Somethinc",category:"Skincare",price:72000,desc:"Produk pembersih dalam rutinitas wajah."},
+  {name:"Face Mist",brand:"Sariayu",category:"Skincare",price:35000,desc:"Semprotan wajah untuk rutinitas perawatan."},
+  {name:"BB Cream",brand:"Emina",category:"Makeup",price:42000,desc:"Complexion ringan untuk riasan."},
+  {name:"Primer Makeup",brand:"Make Over",category:"Makeup",price:110000,desc:"Produk dasar sebelum makeup."},
+  {name:"Highlighter",brand:"ESQA",category:"Makeup",price:95000,desc:"Memberi efek bercahaya pada riasan."},
+  {name:"Contour Palette",brand:"Make Over",category:"Makeup",price:120000,desc:"Palet untuk dimensi riasan wajah."},
+  {name:"Eyebrow Pencil",brand:"Wardah",category:"Makeup",price:35000,desc:"Pensil untuk merapikan alis."},
+  {name:"Brow Gel",brand:"Emina",category:"Makeup",price:38000,desc:"Gel untuk menata alis."},
+  {name:"False Lashes",brand:"ESQA",category:"Makeup",price:65000,desc:"Bulu mata untuk tampilan riasan."},
+  {name:"Makeup Sponge",brand:"Make Over",category:"Makeup",price:45000,desc:"Spons untuk membantu aplikasi makeup."},
+  {name:"Brush Set",brand:"ESQA",category:"Makeup",price:145000,desc:"Kumpulan kuas untuk aplikasi riasan."},
+  {name:"Makeup Remover",brand:"Wardah",category:"Makeup",price:38000,desc:"Pembersih riasan setelah beraktivitas."},
+  {name:"Body Wash Floral",brand:"Scarlett Whitening",category:"Body Care",price:55000,desc:"Pembersih tubuh beraroma floral."},
+  {name:"Body Scrub Coffee",brand:"Mustika Ratu",category:"Body Care",price:40000,desc:"Scrub tubuh untuk rutinitas mandi."},
+  {name:"Body Butter Shea",brand:"Scarlett Whitening",category:"Body Care",price:92000,desc:"Pelembap tubuh bertekstur kaya."},
+  {name:"Hand Lotion",brand:"Sariayu",category:"Body Care",price:30000,desc:"Lotion untuk perawatan tangan."},
+  {name:"Foot Scrub",brand:"Mustika Ratu",category:"Body Care",price:35000,desc:"Scrub untuk perawatan kaki."},
+  {name:"Body Oil",brand:"Scarlett Whitening",category:"Body Care",price:85000,desc:"Minyak untuk rutinitas perawatan tubuh."},
+  {name:"Bath Salt",brand:"Mustika Ratu",category:"Body Care",price:45000,desc:"Produk pelengkap waktu mandi."},
+  {name:"Body Sunscreen",brand:"Azarine",category:"Body Care",price:78000,desc:"Sunscreen untuk area tubuh yang terpapar."},
+  {name:"Body Serum Gel",brand:"Scarlett Whitening",category:"Body Care",price:72000,desc:"Serum untuk perawatan tubuh."},
+  {name:"Cuticle Oil",brand:"Sariayu",category:"Body Care",price:28000,desc:"Minyak untuk perawatan kutikula kuku."},
+  {name:"Shampoo Anti-Dandruff",brand:"Natur",category:"Hair Care",price:49000,desc:"Sampo untuk rutinitas perawatan kulit kepala."},
+  {name:"Conditioner Smooth",brand:"Makarizo",category:"Hair Care",price:52000,desc:"Kondisioner untuk rambut."},
+  {name:"Hair Mask Repair",brand:"Makarizo",category:"Hair Care",price:78000,desc:"Masker rambut untuk perawatan berkala."},
+  {name:"Hair Serum Shine",brand:"Natur",category:"Hair Care",price:58000,desc:"Serum rambut untuk tampilan berkilau."},
+  {name:"Hair Vitamin Spray",brand:"Makarizo",category:"Hair Care",price:42000,desc:"Perawatan rambut dalam bentuk spray."},
+  {name:"Scalp Tonic",brand:"Natur",category:"Hair Care",price:55000,desc:"Tonic untuk rutinitas perawatan kulit kepala."},
+  {name:"Hair Styling Cream",brand:"Makarizo",category:"Hair Care",price:62000,desc:"Krim untuk membantu penataan rambut."},
+  {name:"Hair Protection Spray",brand:"Makarizo",category:"Hair Care",price:68000,desc:"Produk pendukung sebelum penataan rambut."},
+  {name:"Hair Growth Care",brand:"Natur",category:"Hair Care",price:59000,desc:"Produk perawatan rambut sesuai petunjuk."},
+  {name:"Hair Treatment Cream",brand:"Makarizo",category:"Hair Care",price:75000,desc:"Krim untuk perawatan rambut."}
+];
+
+const imageByCategory = {
+  "Skincare":"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=600&q=75",
+  "Makeup":"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=75",
+  "Body Care":"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=75",
+  "Hair Care":"https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=600&q=75",
+  "Fragrance":"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=75",
+  "Lip Care":"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=75"
+};
+
+const iconsByCategory = {
+  "Skincare":"fa-droplet",
+  "Makeup":"fa-wand-magic-sparkles",
+  "Body Care":"fa-spa",
+  "Hair Care":"fa-wind",
+  "Fragrance":"fa-spray-can-sparkles",
+  "Lip Care":"fa-heart"
+};
+
+// Tepat 100 produk ditampilkan dalam katalog.
+const products = productSeed.slice(0,100).map((product,index)=>({
+  ...product,
+  id:index+1
+}));
+
+const grid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const categorySelect = document.getElementById("categorySelect");
+const productCount = document.getElementById("productCount");
+const loadMore = document.getElementById("loadMore");
+const chips = document.querySelectorAll(".chip");
+
+let visibleLimit = 20;
+let activeCategory = "Semua";
+
+function formatRupiah(price){
+  return new Intl.NumberFormat("id-ID",{
+    style:"currency",
+    currency:"IDR",
+    maximumFractionDigits:0
+  }).format(price);
+}
+
+function getFilteredProducts(){
+  const query = searchInput.value.trim().toLowerCase();
+  return products.filter(product=>{
+    const matchesCategory =
+      activeCategory==="Semua" || product.category===activeCategory;
+
+    const searchable =
+      `${product.name} ${product.brand} ${product.category} ${product.desc}`.toLowerCase();
+
+    return matchesCategory && searchable.includes(query);
+  });
+}
+
+function renderProducts(){
+  const filtered = getFilteredProducts();
+  const shown = filtered.slice(0,visibleLimit);
+
+  productCount.textContent =
+    `Menampilkan ${shown.length} dari ${filtered.length} produk yang sesuai. Total katalog: ${products.length} produk.`;
+
+  grid.innerHTML = "";
+
+  if(filtered.length===0){
+    grid.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>Produk tidak ditemukan</h3>
+        <p>Coba kata kunci atau kategori lainnya.</p>
+      </div>`;
+    loadMore.style.display="none";
+    return;
+  }
+
+  shown.forEach(product=>{
+    const card = document.createElement("article");
+    card.className = "product-card";
+
+    const image = imageByCategory[product.category];
+    const icon = iconsByCategory[product.category] || "fa-spa";
+
+    card.innerHTML = `
+      <div class="product-image">
+        <img src="${image}" alt="Ilustrasi kategori ${product.category}"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <i class="product-icon fa-solid ${icon}" style="display:none"></i>
+        <span class="product-badge">Produk ${String(product.id).padStart(3,"0")}</span>
+      </div>
+      <div class="product-info">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.name}</h3>
+        <p class="product-brand">Brand: ${product.brand}</p>
+        <div class="product-price">${formatRupiah(product.price)}</div>
+        <p class="product-desc">${product.desc}</p>
+        <button class="product-detail" type="button" data-id="${product.id}">
+          <i class="fa-regular fa-circle-question"></i> Info produk
+        </button>
+      </div>`;
+
+    grid.appendChild(card);
+  });
+
+  loadMore.style.display = shown.length < filtered.length ? "inline-block" : "none";
+}
+
+function setCategory(category){
+  activeCategory = category;
+  categorySelect.value = category;
+  visibleLimit = 20;
+
+  chips.forEach(chip=>{
+    chip.classList.toggle("active",chip.dataset.category===category);
+  });
+
+  renderProducts();
+}
+
+searchInput.addEventListener("input",()=>{
+  visibleLimit = 20;
+  renderProducts();
+});
+
+categorySelect.addEventListener("change",()=>{
+  setCategory(categorySelect.value);
+});
+
+chips.forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    setCategory(chip.dataset.category);
+  });
+});
+
+loadMore.addEventListener("click",()=>{
+  visibleLimit += 20;
+  renderProducts();
+});
+
+grid.addEventListener("click",event=>{
+  const button = event.target.closest(".product-detail");
+  if(!button) return;
+
+  const product = products.find(item=>item.id===Number(button.dataset.id));
+  if(!product) return;
+
+  alert(
+    `${product.name}\n`+
+    `Brand: ${product.brand}\n`+
+    `Kategori: ${product.category}\n`+
+    `Harga contoh: ${formatRupiah(product.price)}\n\n`+
+    `${product.desc}\n\n`+
+    `Informasi dan harga ini merupakan contoh katalog, bukan penawaran resmi.`
+  );
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderProducts();
+</script>
+</body>
+</html>
